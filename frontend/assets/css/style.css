@@ -287,3 +287,92 @@ footer {
     line-height: 1.7;
 
 }
+
+
+/* ================= PRACTICE ================= */
+
+.practice {
+
+    width: 90%;
+
+    max-width: 900px;
+
+    margin: 80px auto;
+
+}
+
+.practice h1 {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+}
+
+.typing-box {
+
+    background: var(--card);
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    font-size: 22px;
+
+    line-height: 2;
+
+    margin-bottom: 30px;
+
+}
+
+textarea {
+
+    width: 100%;
+
+    height: 180px;
+
+    padding: 20px;
+
+    font-size: 20px;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    resize: none;
+
+}
+
+.result {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 30px;
+
+}
+
+.result div {
+
+    text-align: center;
+
+}
+
+#restartBtn {
+
+    margin-top: 40px;
+
+    padding: 15px 35px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--primary);
+
+    color: white;
+
+    cursor: pointer;
+
+}
