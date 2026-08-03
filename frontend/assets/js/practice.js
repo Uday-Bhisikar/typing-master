@@ -1,3 +1,7 @@
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+const difficulty = document.getElementById("difficulty");
+
 const paragraph = document.getElementById("paragraph");
 const input = document.getElementById("input");
 
@@ -6,14 +10,50 @@ const accuracyText = document.getElementById("accuracy");
 const timerText = document.getElementById("timer");
 const restartBtn = document.getElementById("restartBtn");
 
-const text =
-"The quick brown fox jumps over the lazy dog. Practice every day to improve your typing speed.";
+const easyParagraphs = [
+    "The sun rises in the east.",
+    "I love learning every day.",
+    "Coding is fun and creative."
+];
+
+const mediumParagraphs = [
+    "Typing practice improves your speed and accuracy over time.",
+    "JavaScript makes websites interactive and user friendly.",
+    "Docker helps developers package applications efficiently."
+];
+
+const hardParagraphs = [
+    "Cloud computing enables businesses to deploy scalable applications across multiple regions with high availability and fault tolerance.",
+    "Consistent typing practice combined with accuracy and proper finger placement significantly improves overall productivity and reduces mistakes."
+];
+
+let text = "";
+
+let text = "";
 
 let timer = 60;
 let timerStarted = false;
 let interval;
 
 function loadParagraph() {
+
+    let list = [];
+
+    if (difficulty.value === "easy") {
+
+        list = easyParagraphs;
+
+    } else if (difficulty.value === "medium") {
+
+        list = mediumParagraphs;
+
+    } else {
+
+        list = hardParagraphs;
+
+    }
+
+    text = list[Math.floor(Math.random() * list.length)];
 
     paragraph.innerHTML = "";
 
@@ -32,6 +72,7 @@ function loadParagraph() {
 }
 
 loadParagraph();
+input.focus();
 
 function startTimer(){
 
@@ -115,6 +156,18 @@ input.addEventListener("input",()=>{
 
     wpmText.innerText = wpm;
 
+    let progress = Math.round((typed.length / text.length) * 100);
+
+if(progress > 100){
+
+    progress = 100;
+
+}
+
+progressBar.style.width = progress + "%";
+
+progressText.innerText = progress + "%";
+
 });
 
 restartBtn.addEventListener("click",()=>{
@@ -134,6 +187,20 @@ restartBtn.addEventListener("click",()=>{
     wpmText.innerText = 0;
 
     accuracyText.innerText = "100%";
+
+    loadParagraph();
+
+    input.focus();
+
+    progressBar.style.width = "0%";
+
+progressText.innerText = "0%";
+
+});
+
+difficulty.addEventListener("change", () => {
+
+    input.value = "";
 
     loadParagraph();
 
