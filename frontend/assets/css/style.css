@@ -397,3 +397,11 @@ textarea {
     background: yellow;
 
 }
+
+textarea:disabled {
+
+    background: #e5e7eb;
+
+    cursor: not-allowed;
+
+}
