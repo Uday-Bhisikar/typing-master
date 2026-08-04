@@ -1,3 +1,8 @@
+const characterCount = document.getElementById("characterCount");
+const totalCharacters = document.getElementById("totalCharacters");
+
+
+
 const mistakesText = document.getElementById("mistakes");
 const progressBar = document.getElementById("progressBar");
 const progressText = document.getElementById("progressText");
@@ -69,6 +74,8 @@ function loadParagraph() {
     });
 
     paragraph.children[0].classList.add("active");
+    totalCharacters.innerText = text.length;
+    characterCount.innerText = 0; 
 
 }
 
@@ -170,6 +177,7 @@ progressBar.style.width = progress + "%";
 
 progressText.innerText = progress + "%";
 
+characterCount.innerText = typed.length;
 });
 
 restartBtn.addEventListener("click",()=>{
@@ -185,6 +193,8 @@ restartBtn.addEventListener("click",()=>{
     input.disabled = false;
 
     input.value = "";
+
+    characterCount.innerText = 0;
 
     wpmText.innerText = 0;
 

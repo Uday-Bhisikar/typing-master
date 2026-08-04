@@ -489,3 +489,17 @@ textarea:disabled {
     font-weight: 600;
 
 }
+
+/* ================= CHARACTER COUNT ================= */
+
+.character-count {
+
+    text-align: right;
+
+    margin-bottom: 20px;
+
+    color: var(--gray);
+
+    font-weight: 600;
+
+}
