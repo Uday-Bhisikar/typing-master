@@ -37,7 +37,7 @@ const hardParagraphs = [
 
 let text = "";
 
-let timer = 60;
+let timer = Number(localStorage.getItem("testTime")) || 60;
 let timerStarted = false;
 let interval;
 
@@ -90,13 +90,21 @@ function startTimer(){
 
         timerText.innerText = timer;
 
-        if(timer <= 0){
+        if(timer<=0){
 
-            clearInterval(interval);
+clearInterval(interval);
 
-            input.disabled = true;
+input.disabled=true;
 
-        }
+localStorage.setItem("wpm",wpmText.innerText);
+
+localStorage.setItem("accuracy",accuracyText.innerText);
+
+localStorage.setItem("mistakes",mistakesText.innerText);
+
+window.location.href="./result.html";
+
+}
 
     },1000);
 
@@ -184,7 +192,9 @@ restartBtn.addEventListener("click",()=>{
 
     clearInterval(interval);
 
-    timer = 60;
+    timer = Number(localStorage.getItem("testTime")) || 60;
+
+    timerText.innerText = timer;
 
     timerStarted = false;
 
