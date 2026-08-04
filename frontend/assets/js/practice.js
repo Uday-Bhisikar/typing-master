@@ -1,3 +1,4 @@
+const mistakesText = document.getElementById("mistakes");
 const progressBar = document.getElementById("progressBar");
 const progressText = document.getElementById("progressText");
 const difficulty = document.getElementById("difficulty");
@@ -27,7 +28,7 @@ const hardParagraphs = [
     "Consistent typing practice combined with accuracy and proper finger placement significantly improves overall productivity and reduces mistakes."
 ];
 
-let text = "";
+
 
 let text = "";
 
@@ -109,6 +110,7 @@ input.addEventListener("input",()=>{
     const characters = paragraph.querySelectorAll("span");
 
     let correct = 0;
+    let mistakes = 0;
 
     characters.forEach((char)=>{
 
@@ -118,19 +120,17 @@ input.addEventListener("input",()=>{
 
     typed.forEach((letter,index)=>{
 
-        if(letter===text[index]){
+        if (letter === text[index]) {
 
-            characters[index].classList.add("correct");
+    characters[index].classList.add("correct");
+    correct++;
 
-            correct++;
+} else {
 
-        }
+    characters[index].classList.add("wrong");
+    mistakes++;
 
-        else{
-
-            characters[index].classList.add("wrong");
-
-        }
+}
 
     });
 
@@ -145,6 +145,8 @@ input.addEventListener("input",()=>{
     if(isNaN(accuracy)) accuracy = 100;
 
     accuracyText.innerText = accuracy + "%";
+
+    mistakesText.innerText = mistakes;
 
     let words = typed.length / 5;
 
@@ -187,6 +189,8 @@ restartBtn.addEventListener("click",()=>{
     wpmText.innerText = 0;
 
     accuracyText.innerText = "100%";
+
+    mistakesText.innerText = 0;
 
     loadParagraph();
 
